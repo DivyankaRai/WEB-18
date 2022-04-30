@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #name,#email,#pwd,#sub{
+            width:45%;
+            margin: auto;
+            display: block;
+            height:22px;
+            border: 2px solid black;
+            font-weight: bold;
+            text-align: center;
+        }
+        div{
+            background-color: rgb(73, 188, 188);
+            height:300px;
+            width: 40%;
+            margin: auto;
+            margin-top: 5%;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <div>
+        <br><br><input id="name" type="text" placeholder="Enter your name"><br><br>
+        <input id="email" type="email" placeholder="Enter your email"><br><br>
+        <input id="pwd" type="text" placeholder="Enter your password"><br><br>
+        <input id="sub" type="submit" value="submit"/>
+        </div>
+    </form>
+    
+    
+</body>
+</html>
+<script>
+    var form = document.querySelector("form")
+    form.addEventListener("submit",function(event){
+        event.preventDefault()
+
+        var data = {
+            name:form.name.value,
+            email:form.email.value,
+            pwd:form.pwd.value
+        }
+        console.log(data)
+        localStorage.setItem("userdata",JSON.stringify(data))
+        window.location.href="login.html"
+    })
+
+
+</script>

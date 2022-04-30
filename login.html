@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <style>
+         #email,#pwd,#sub{
+            width:40%;
+            margin: auto;
+            display: block;
+            height:22px;
+            border: 2px solid black;
+            font-weight: bold;
+        }
+        div{
+            background-color: rgb(53, 139, 244);
+            height:300px;
+            width: 40%;
+            margin: auto;
+            margin-top: 5%;
+            padding-top: 3%;
+        }
+    </style>
+</head>
+<body>
+    <!-- <h1>login</h1> -->
+    <form>
+        <div>
+        <br/><br/><input id="email" type="email" placeholder="Enter your email"><br><br>
+        <input id="pwd" type="text" placeholder="Enter your password"><br><br>
+        <input id="sub" type="submit" value="submit"/>
+        </div>
+    </form>
+</body>
+</html>
+<script>
+    var form = document.querySelector("form")
+    var userdata = JSON.parse(localStorage.getItem("userdata"))
+    form.addEventListener("submit",function(event){
+        event.preventDefault()
+
+        var data = {
+            email:form.email.value,
+            pwd:form.pwd.value
+        }
+        if(userdata==null){
+            alert("Create an account")
+        }else if(userdata.email==data.email && userdata.pwd==data.pwd){
+            alert("Sign in Successfull")
+            localStorage.setItem("signin",JSON.stringify(userdata))
+        }else{
+            alert("user doesnot exist")
+        }
+    })
+</script>
